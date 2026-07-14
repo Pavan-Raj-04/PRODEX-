@@ -310,3 +310,35 @@
         }
     }
 }
+
+.cart-items{
+    .table{
+        display: flex;
+        flex-direction: column;
+        width: 80vw;
+        margin: 20px auto;
+        table{
+            border-collapse: collapse;
+            /* text-align: center; */
+            thead{
+                tr{
+                    th{
+                        background-color: rgb(246, 137, 19);
+                        padding: 10px;;
+                    }
+                }
+            }
+            tbody{
+                tr{
+                    td{
+                        padding: 10px;
+                        /* background-color: rgb(1, 62, 62); */
+                    }
+                }
+            }
+        }
+        h2{
+            margin: 10px 0 10px 858px;
+        }
+    }
+}
