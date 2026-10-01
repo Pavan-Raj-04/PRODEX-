@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
 
 const Cartitems = () => {
 
@@ -7,7 +8,7 @@ const Cartitems = () => {
   let [apiData, setApiData] = useState([])
 
   let fetchData = async()=>{
-    let response = await axios.get('http://localhost:4000/cartitems')
+    let response = await axios.get(`http://localhost:4000/cartitems`)
     console.log(response.data)
     setApiData(response.data)
 
@@ -16,9 +17,16 @@ const Cartitems = () => {
     fetchData()
   },[])
 
+
+
+  let removeItem = async(id)=>{
+    await axios.delete(`http://localhost:4000/cartitems/${id}`)
+    setApiData((prev) => prev.filter((elem)=> elem.id != id))
+  }
   let total = apiData.reduce((acc,elem)=>{
     return acc + Math.floor((elem.price)*95)
   }, 0)
+  
 
   return (
     <>
@@ -45,6 +53,7 @@ const Cartitems = () => {
                       <td>{category}</td>
                       <td>{rating?.rate}</td>
                       <td>{Math.floor(price*95)}</td>
+                      <td><button onClick={()=>removeItem(id)}>Remove</button></td>
                     </tr>
                   </>
                 )

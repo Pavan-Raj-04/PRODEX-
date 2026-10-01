@@ -31,7 +31,7 @@ const Viewmore = () => {
     let bool = window.confirm('Do you want to delete this product..?')
 
     if(bool){
-        axios.delete('http://localhost:4000/products/${paramsId}')
+        axios.delete(`http://localhost:4000/products/${paramsId}`)
         // alert('Product Deleted')
         toast.error("product deleted")
         navigate('/')
@@ -75,7 +75,7 @@ const Viewmore = () => {
                     <div className="count">{`(${rating?.count})`}</div>
                 </div>
                 <div className="more">
-                    <button onClick={addCart}>Add to cart</button> 
+                    <Link to={'/cart'}><button onClick={addCart}>Add to cart</button></Link>
                     <button onClick={handleDelete}>Delete</button>
                 </div>
             </div>
